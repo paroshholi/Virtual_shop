@@ -1,0 +1,50 @@
+{%extends 'home.html' %}
+{%block content%}
+<h2 style="color: rgba(12, 171, 240, 0.532);padding-left: 90px;">Wishlist</h2>
+<div class="row">
+    <div class="container" style="padding-left: 90px;">
+      <div class="row">
+        {% for product in wishlist_products %}
+        <div class="col-lg-3 col-md-6 col-sm-6 d-flex">
+          <div class="card w-100 my-2 shadow-2-strong">
+            <img src="{{ product.image.url }}" class="card-img-top" style="aspect-ratio: 1 / 1" />
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">{{ product.name }}</h5>
+              <p class="card-text">₹{{ product.price }}</p>
+              <div class="card-footer d-flex align-items-end pt-3 px-0 pb-0 mt-auto">
+                 <!-- Add to Cart button -->
+                 <a href="#" class="btn btn-primary shadow-0 me-1" onclick="addToCart(event, '{{ product.id }}', '{{ product.name }}', '{{ product.price }}')">Add to cart</a>   
+                             <button onclick="removeFromWishlist('{{ product.id }}')" style="background-color: white; color: black; border: none; padding: 8px 16px; cursor: pointer;" onmousedown="this.style.backgroundColor='blue'" onmouseup="this.style.backgroundColor='white'">Remove from Wishlist</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <script>
+    function removeFromWishlist(productId) {
+        fetch(`/remove_from_wishlist/${productId}/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}', // Include CSRF token for security
+            },
+        })
+        .then(response => {
+            if (response.ok) {
+                // If removal is successful, reload the page to reflect changes
+                window.location.reload();
+            } else {
+                // Handle errors if necessary
+                console.error('Error removing item from wishlist:', response.statusText);
+            }
+        })
+        .catch(error => {
+            console.error('Error removing item from wishlist:', error);
+        });
+    }
+    
+</script>
+{%endblock%}

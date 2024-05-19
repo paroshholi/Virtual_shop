@@ -1,0 +1,551 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "Hi",
+        "Hey",
+        "Is anyone there?",
+        "Hello",
+        "Good day",
+        "Greetings",
+        "Hi there",
+        "Good morning",
+        "Good afternoon"
+      ],
+      "responses": [
+        "Hey, Good Day! How can I help you?"
+      ]
+    },
+    {
+      "tag": "personal",
+      "patterns": [
+        "How are you?",
+        "How are you doing?",
+        "How is your day?",
+        "What's up?",
+        "How's everything?",
+        "How's it going?",
+        "How's life?",
+        "How have you been?",
+        "How's your day been?"
+      ],
+      "responses": [
+        "I'm good, all's good, thanks. How about you?"
+      ]
+    },
+    {
+      "tag": "happy",
+      "patterns": [
+        "I'm good",
+        "Im good",
+        "Im doing good",
+        "I am good",
+        "I am okay",
+        "I'm great",
+        "I'm fine",
+        "I'm doing well",
+        "Everything's great",
+        "I'm fantastic"
+      ],
+      "responses": [
+        "Great to hear you are doing good."
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": ["Bye", "See you later", "Goodbye", "Take care", "See you soon", "Farewell", "Catch you later", "Till next time", "Adios", "So long"],
+      "responses": [
+        "See you later, thanks for visiting. Hope I was able to help!",
+        "Have a nice day. Hope I was able to help!"
+      ]
+    },
+    {
+      "tag": "thanks",
+      "patterns": ["Thanks", "Thank you", "That's helpful", "Thank's a lot!", "thx", "thnks", "Appreciate it", "Much obliged", "Thanks a bunch", "Thank you so much"],
+      "responses": ["Happy to help!", "Any time!", "My pleasure"]
+    },
+    {
+      "tag": "show",
+      "patterns": [
+        "Which items do you have?",
+        "What kinds of items are there?",
+        "Display items you sell?",
+        "Show the available items?",
+        " available products?",
+        "available accessories",
+        "What are the options?",
+        "Show me your inventory",
+        "What do you offer?",
+        "List of items"
+      ],
+      "responses": [
+        "Search your preference in the search bar to see all available products."
+      ]
+    },
+    {
+      "tag": "payments",
+      "patterns": [
+        "Do you take credit cards?",
+        "Do you accept Mastercard?",
+        "Can I pay with Cash?",
+        "Are you cash only?",
+        "What are your payment methods?",
+        "How do I pay?",
+        "Accepted payment methods",
+        "What forms of payment do you accept?",
+        "Payment options",
+        "Can I use PayPal?"
+      ],
+      "responses": [
+        "We accept VISA, Mastercard, and Cash."
+      ]
+    },
+    {
+      "tag": "track",
+      "patterns": [
+        "How can I track my order", 
+        "I want to track my order", 
+        "Can I track my order", 
+        "Track order",
+        "Where is my package?",
+        "Track my shipment",
+        "Find my order",
+        "Track my delivery",
+        "Check order status",
+        "Order tracking information"
+      ],
+      "responses": [
+        "Visit the order page, click on the specific order, select 'track my order', and check the status."
+      ]
+    },
+    {
+      "tag": "delivery",
+      "patterns": [
+        "How long does delivery take?",
+        "How long does shipping take?",
+        "Please Tell me about my delivery",
+        "When do I get my delivery?",
+        "Why is my order not delivered yet",
+        "When can I expect delivery?",
+        "Can you provide shipping details?",
+        "Shipping time",
+        "Delivery timeframe",
+        "Expected delivery date"
+      ],
+      "responses": [
+        "Delivery takes 2-4 days. Please bear with us!",
+        "Shipping takes 2-4 days. Please bear with us!"
+      ]
+    },
+    {
+      "tag": "confirm",
+      "patterns": [
+        "My payment was processed successfully but I didn't get any order confirmation. What should I do?",
+        "Payment was completed but no confirmation",
+        "Order was not confirmed",
+        "Money deducted but order is not confirmed",
+        "How do I know if my order is confirmed?",
+        "Confirmation email not received",
+        "Payment successful but no confirmation",
+        "Order not confirmed after payment",
+        "Order confirmation not received"
+      ],
+      "responses": [
+        "It takes up to 24 hours for confirmation, please bear with us! Type 'Need more help' for more assistance."
+      ]
+    },
+    {
+      "tag": "delay",
+      "patterns": [
+        "Why is my order delayed? ",
+        "Did my order get delayed?",
+        "Why is my order not delivered yet?",
+        "When do I get my delivery?",
+        "Is there a delay in my shipment?",
+        "Delayed order status",
+        "Late delivery",
+        "Order taking too long",
+        "Delivery delay"
+      ],
+      "responses": [
+        "We are really sorry if there has been a delay in your order! If your order is within the delivery period, we recommend you to please wait during this period since our Delivery Heroes make 3 attempts to deliver your order!",
+        "If your order is past up to 3 days after the delivery period, there may be logistic issues causing a delay in delivery. Please type 'Common reasons for delivery delay' to know more about this.",
+        "We appreciate if you could wait for your items as most orders are delivered successfully within this period.",
+        "If your order is past more than 3 days, since there may be unexpected issues causing delivery delays, you can click on 'Need more Help' for further assistance."
+      ]
+    },
+    {
+      "tag": "reasons",
+      "patterns": [
+        "Common reasons for delivery delay",
+        "common reasons for delivery delay",
+        "reasons for delay",
+        "delivery delay",
+        "What causes delays in delivery?",
+        "Why is my order taking so long?",
+        "Delivery delay factors",
+        "Causes of late delivery",
+        "Delayed shipment reasons"
+      ],
+      "responses": [
+        "Reasons include Seller Sourcing Issues, Courier Issues, Cross Border shipment delay, Wrong Address or Phone Number, and Unavailability of Customer."
+      ]
+    },
+    {
+          "tag": "more",
+          "patterns": [
+            "Need more help",
+            "help me more",
+            "can I talk to an agent",
+            "can I call customer service",
+            "customer support number",
+            "how to contact customer service",
+            "customer service number",
+            "contact number for help",
+            "helpline number",
+            "How to become a seller",
+            "How to contact a seller",
+            "Help please",
+            "Support assistance",
+            "Need assistance",
+            "Customer service help"
+          ],
+          "responses": [
+            "Contact us for further information here: Phone: 021-111-132729. Timings are from 09:00 AM to 05:00 PM from Monday to Saturday."
+          ]
+        },
+        {
+          "tag": "cancel",
+          "patterns": [
+            "Can I cancel my order?",
+            "Why is my order cancelled?",
+            "How do I can cancel my order",
+            "Can I cancel an order",
+            "Want to cancel my order",
+            "Cancel my order",
+            "Order cancellation request",
+            "Revoke my order",
+            "Withdraw my order",
+            "Abort my order"
+          ],
+          "responses": [
+            "Order can only be cancelled within 7 days of placement. Digital goods do not qualify for refund.",
+            "Visit my orders page to check the status of specific orders."
+          ]
+        },
+        {
+          "tag": "refund",
+          "patterns": [
+            "Can I refund an item.",
+            "I want to refund an item",
+            "can I refund my order",
+            "Are refunds available",
+            "Refund policy",
+            "Refund eligibility",
+            "Item return for refund",
+            "Initiate refund process",
+            "Refund request",
+            "Return for refund",
+            "Refund my money",
+            "Get my money back",
+            "Request a refund",
+            "Refund procedure"
+          ],
+          "responses": [
+            "Refund can only be issued within 7 days of placement. Digital goods do not qualify for refund.",
+            "Visit my orders page to check for specific orders."
+          ]
+        },
+        {
+          "tag": "refund status",
+          "patterns": [
+            "Why is the status Refunded when it's not credited?",
+            "No refund even though status is refunded",
+            "No refund when status says refunded",
+            "I did not receive my refund money",
+            "Refund money not received",
+            "Where is my refund?",
+            "Refund status inquiry",
+            "Check refund progress",
+            "Track refund",
+            "Refund confirmation",
+            "Refunded but not credited",
+            "Refund delay",
+            "Waiting for refund",
+            "Refund not received yet"
+          ],
+          "responses": [
+            "Please be patient as refunds take up to 30 days to receive into the bank."
+          ]
+        },
+        {
+          "tag": "return",
+          "patterns": [
+            "How long do return items take",
+            "When will my items be returned",
+            "When can I get a refund for return items?",
+            "Are refunds available for return?",
+            "Return procedure",
+            "Return timeline",
+            "Return process",
+            "Request return",
+            "Item return inquiry",
+            "Return initiation",
+            "Item return status",
+            "Return confirmation",
+            "Check return status",
+            "Return refund",
+            "Return for replacement"
+          ],
+          "responses": [
+            "Return takes 6 to 10 business days. There are 2 parts to the return process. In the first part, we check the items received from you to verify the issue highlighted in your return claim. Once we've verified and accepted your return, we initiate the refund process which takes 1 business day for Daraz wallet and 2-10 business days for bank or card."
+          ]
+        },
+        {
+          "tag": "withdraw refunds",
+          "patterns": [
+            "How to withdraw refunds from wallet?",
+            "Withdraw funds",
+            "Can I withdraw refunds",
+            "Refund withdrawal",
+            "Wallet refund withdrawal",
+            "Withdraw refund money",
+            "Retrieve refund amount",
+            "Cash out refund",
+            "Wallet withdrawal procedure",
+            "Refund money withdrawal"
+          ],
+          "responses": [
+            "Withdrawing refunds from your wallet is very easy. This is the process"
+          ]
+        },
+        {
+          "tag": "order status",
+          "patterns": [
+            "What is my order status",
+            "I want to know my return status",
+            "How to return status",
+            "Order status inquiry",
+            "Check my order status",
+            "View return status",
+            "Check order delivery status",
+            "Inquire about order",
+            "Track my order",
+            "Order update",
+            "Order progress",
+            "Order status update"
+          ],
+          "responses": [
+            "Please visit the My Orders page for a list of your confirmed orders."
+          ]
+        },
+        {
+          "tag": "use voucher",
+          "patterns": [
+            "How to use a voucher?",
+            "Can I use a voucher?",
+            "How to use a voucher?",
+            "Voucher redemption",
+            "Voucher application",
+            "Redeem voucher",
+            "Apply voucher code",
+            "Voucher utilization",
+            "Voucher usage",
+            "Voucher code application"
+          ],
+          "responses": [
+            "You can add a voucher by clicking on My Cart > Check Out > Enter Voucher Code > APPLY."
+          ]
+        },
+        {
+          "tag": "mobile app",
+          "patterns": [
+            "Can I download a mobile app for this?",
+            "Mobile app",
+            "Download mobile app",
+            "Mobile application",
+            "App download",
+            "iOS app",
+            "Android app",
+            "App installation",
+            "App availability",
+            "App download link",
+            "Mobile app inquiry"
+          ],
+          "responses": [
+            "You can download the Mobile App from both IOS App Store and Google Play Store."
+          ]
+        },
+        {
+          "tag": "deny",
+          "patterns": [
+            "no way","not really","n","i don't think so","no","na","never","nope"
+          ],
+          "responses": [
+            "No problem! Let me know if you need assistance with anything else"
+          ]
+        },
+        {
+          
+        "tag": "order",
+        "patterns": [
+          "I want to buy earphones",
+          "Add charger to cart",
+          "Order phone",
+          "Do you sell earphones", 
+          "I want to order usb", 
+          "i am looking for pendrive", 
+          "i want cable",
+          "order",
+          "Purchase laptop",
+          "i want a mouse",
+          "i want pen drive 32gb",
+          "{product}",
+          "Can you add {product} to my cart?",
+          "I'd like to buy a {product}",
+          "Please add {product} to my order",
+          "I need to purchase {product}",
+          "I need a charger for my phone",
+          "Can you add a mouse to my cart?",
+          "I'm looking for a case for my tablet",
+          "Do you have any headphones available?",
+          "can you add mouse to my cart",
+          "I want to buy a keyboard for my laptop",
+          "I'm in need of a USB cable for my device",
+          "How to place an order?",
+          "Ordering process",
+          "How to order?",
+          "Placing an order",
+          "How can I buy from you?",
+          "Order assistance",
+          "Guidance on ordering",
+          "Order initiation",
+          "How to make a purchase",
+          "Buying instructions",
+          "Procedure to order"
+        ],
+        "responses": [
+          "Your {product} has been added to the cart.",
+          "Great choice! We've added {product} to your cart.",
+          "{product} is now in your shopping cart.",
+          "You're all set! {product} has been added to your cart."
+        ]
+      },
+      {
+        "tag": "category",
+        "patterns": [
+          "Show mobiles",
+          "View laptops",
+          "List phones",
+          "Display chargers",
+          "What {category} do you have?",
+          "Can you show me your {category} selection?",
+          "I'm interested in {category}",
+          "Please display {category} products",
+          "I'm looking for laptop accessories",
+          "I want to order laptop accessories",
+          "I want to order mobile accessories",
+          "Looking for accessories for my laptop",
+          "i want mobile products",
+          "i want laptop products",
+          "i want to buy mobile products",
+          "i want to buy laptop products",
+          "Browse {category}",
+          "Check {category} items",
+          "Explore {category}",
+          "What are the options in {category}?",
+          "Show me {category} collection"
+        ],
+        "responses": [
+          "Here are the available products in the {category} category: {product_list}.",
+          "Sure! These are the {category} products we have: {product_list}.",
+          "You can explore our {category} selection: {product_list}.",
+          "Check out these {category} items: {product_list}."
+        ]
+      },
+      {
+        "tag": "remove_from_cart",
+        "patterns": [
+          "Remove {product} from cart",
+          "Delete {product} from my order",
+          "Take {product} out of my cart",
+          "Cancel {product} from my order",
+          "Remove {product} from my shopping list",
+          "I want to remove {product} from my cart",
+          "Please take {product} off my order",
+          "Exclude {product} from my cart",
+          "Discard {product} from my order"
+        ],
+        "responses": [
+          "The {product} has been removed from your cart.",
+          "Sure, {product} has been taken out of your order.",
+          "{product} has been removed from your shopping list.",
+          "The {product} has been canceled from your order."
+        ]
+      },
+      {
+        "tag": "price",
+        "patterns": [
+           "What is the price of [product]?", 
+           "How much does [product] cost?",
+           "Price of [product]?",
+           "product price",
+           "What's the price tag for [product]?",
+           "How expensive is [product]?",
+           "Could you tell me the cost of [product]?",
+           "What's the price point for [product]?",
+           "How much do I need to pay for [product]?",
+           "What's the going rate for [product]?",
+           "Could you provide the pricing for [product]?",
+           "What's the cost associated with [product]?",
+           "How price is [product]?",
+           "Could you give me an idea of the pricing for [product]?",
+           "What's the monetary value of [product]?",
+           "What's the price range for [product]?",
+           "How much am I looking at spending on [product]?",
+           "What's the cost involved with purchasing [product]?",
+           "What's the current price for [product]?",
+           "Can you inform me about the pricing for [product]?",
+           "What's the expense associated with [product]?",
+           "What's the price tag on [product]?",
+           "How much money do I need for [product]?",
+           "What's the selling price of [product]?"],
+
+        "responses": [
+           "The price of {product} is ₹{price}.",
+           "The current price of {product} is ₹{price}."
+        ]
+      },
+      {
+        "tag": "irrelevant",
+        "patterns": [
+          "what's the time now?",
+          "How old are you?",
+          "who is th president?",
+          "Show the ipl score?",
+          "where are you living?",
+          "which colour dress are you wearing?",
+          "May i know the temperature?",
+          "Can you explain your algorithm?",
+          "had your lunch?",
+          "what did you eat today",
+          "Tell me a joke",
+          "What's your favorite color?",
+          "How's the weather?",
+          "Are you a human?",
+          "Can you sing a song?",
+          "Who created you?",
+          "What's the meaning of life?",
+          "Can you dance?",
+          "Do you sleep?",
+          "How's your day going?",
+          "Tell me something interesting",
+          "Are you a bot?"
+        ],
+        "responses": [
+          "Please ask relevant queries."
+        ]
+      }
+    ]
+  }

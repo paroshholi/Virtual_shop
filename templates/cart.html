@@ -1,0 +1,232 @@
+{% extends 'home.html' %}
+{% block content %}
+{% if user.is_authenticated %}
+<!-- cart.html -->
+<section class="bg-light my-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="card border shadow-0">
+                    <div class="m-4">
+                        <h4 class="card-title mb-4">Your shopping cart</h4>
+                        {% if cart_items %}
+                        {% for item in cart_items %}
+    <div class="row gy-3 mb-4">
+        <div class="col-lg-5">
+            <div class="me-lg-5">
+                <div class="d-flex">
+                    <!-- Replace with item details as needed -->
+                    <img src="{{ item.product.image.url }}" class="border rounded me-3" style="width: 96px; height: 96px;" />
+                    <div class="">
+                        <a href="#" class="nav-link">{{ item.product.name }}</a>
+                        <p class="text-muted">{{ item.product.description }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-sm-6 col-6 d-flex flex-row flex-lg-column flex-xl-row text-nowrap">
+            <div class="">
+                <!-- Input field for quantity -->
+                <input type="number" class="form-control border quantity-input" min="1" value="{{ item.quantity }}"
+                       style="width: 80px;"
+                       data-product-id="{{ item.product.id }}">
+            </div>
+            <div class="">
+              <!-- Display total price for the item -->
+              <text class="h6">₹{{ item.total_price }}</text> <br />
+              <small class="text-muted text-nowrap"> ₹{{ item.product.price }} / per item </small>
+          </div>
+          
+        </div>
+        <div class="col-lg col-sm-6 d-flex justify-content-sm-center justify-content-md-start justify-content-lg-center justify-content-xl-end mb-2">
+            <div class="float-md-end">
+                <a href="#" class="btn btn-light border px-2 pt-2 icon-hover" onclick="addToWishlist(event, '{{ item.product.id }}', '{{ item.product.name }}', '{{ item.product.price }}')">
+                    <i class="fas fa-heart fa-lg text-secondary px-1"></i>
+                </a>
+                <button class="btn btn-light border text-danger icon-hover-danger" onclick="removeFromCart('{{item.product.id }}')">Remove</button>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+                        {% else %}
+                        <p>Your shopping cart is empty.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <!-- cart -->
+
+            <!-- summary -->
+            <div class="col-lg-3">
+                <div class="card mb-3 border shadow-0">
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <label class="form-label">Have coupon?</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control border" name="" placeholder="Coupon code" />
+                                    <button class="btn btn-light border">Apply</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="card shadow-0 border">
+                    <div class="card-body">
+                        <div class="col-lg-3">
+                            <div class="card mb-3 border shadow-0">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between">
+                                        <p class="mb-2">Total price:</p>
+                                        <p class="mb-2">₹{{ total_price }}</p>
+                                    </div>
+                                    <!-- Additional summary details can be added here -->
+                                    <button class="btn btn-primary btn-block" id="purchaseBtn">Purchase</button>
+
+                                    <!-- Modal or popup container -->
+<div id="purchaseModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Confirm Purchase</h2>
+        <p>Total Price: ₹{{ total_price }} <span id="totalPrice"></span></p>
+        <form id="purchaseForm">
+            <!-- CSRF token -->
+            <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+            <!-- Password input -->
+            <div class="form-group">
+                <label for="passwordInput">Enter your password:</label>
+                <input type="password" class="form-control" id="passwordInput" placeholder="Password" required>
+            </div>
+            <!-- Confirm purchase button -->
+            <button type="submit" class="btn btn-primary btn-block" id="confirmPurchaseBtn">Confirm Purchase</button>
+        </form>
+    </div>
+</div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Cart summary details will be dynamically loaded here -->
+                    </div>
+                </div>
+            </div>
+            <!-- summary -->
+        </div>
+    </div>
+</section>
+{% else %}
+<h4 style="padding-left: 80px;color:rgb(34, 86, 206)">Please,Login to continue </h4>
+{% endif %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+    function removeFromCart(productId) {
+        fetch(`/remove_from_cart/${productId}/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}', // Include CSRF token for security
+                },
+            })
+            .then(response => {
+                if (response.ok) {
+                    // If removal is successful, redirect to the same page
+                    window.location.reload();
+                } else {
+                    // Handle errors if necessary
+                    console.error('Error removing item:', response.statusText);
+                }
+            })
+            .catch(error => {
+                console.error('Error removing item:', error);
+            });
+    }
+
+     // Function to handle quantity updates
+     document.querySelectorAll('.quantity-input').forEach(input => {
+      input.addEventListener('change', function() {
+          const productId = this.getAttribute('data-product-id');
+          const newQuantity = this.value;
+          updateQuantity(productId, newQuantity);
+      });
+  });
+
+  // Function to update quantity via AJAX
+  function updateQuantity(productId, newQuantity) {
+      fetch(`/update_quantity/${productId}/${newQuantity}/`, {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+              'X-CSRFToken': '{{ csrf_token }}', // Include CSRF token for security
+          },
+      })
+      .then(response => {
+          if (response.ok) {
+              // If update is successful, reload the page to reflect changes
+              window.location.reload();
+          } else {
+              // Handle errors if necessary
+              console.error('Error updating quantity:', response.statusText);
+          }
+      })
+      .catch(error => {
+          console.error('Error updating quantity:', error);
+      });
+  }
+  // Get the modal
+var modal = document.getElementById("purchaseModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("purchaseBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+// Get the CSRF token from a hidden input field in your HTML
+var csrfToken = document.querySelector("[name=csrfmiddlewaretoken]").value;
+
+// ... (existing code for modal and CSRF token)
+
+// Confirm purchase button click event
+document.getElementById("confirmPurchaseBtn").onclick = function() {
+    var password = document.getElementById("passwordInput").value;
+    
+    // Construct FormData object and append form fields
+    var formData = new FormData();
+    formData.append('password', password);
+    // Add any other form fields if needed
+    
+    // Perform AJAX request to complete purchase
+    fetch('/confirm_purchase/', {
+      method: 'POST',
+      headers: {
+        'X-CSRFToken': csrfToken // Include CSRF token for security
+      },
+      body: formData // Send FormData object directly
+    })
+    modal.style.display = "none";
+    alert('Purchase in process');
+    window.location.reload();
+    
+  };
+  
+
+</script>
+{% endblock %}

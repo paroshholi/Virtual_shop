@@ -1,0 +1,43 @@
+{% extends 'home.html' %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <!-- Main content column -->
+        <div class="col-md-8">
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="{{ product.image.url }}" class="img-fluid rounded-start" alt="{{ product.name }}">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.name }}</h5>
+                            <p class="card-text">{{ product.description }}</p>
+                            <p class="card-text">Price: ₹{{ product.price }}</p>
+                            {% if product.is_sale %}
+                                <p class="card-text text-danger">On Sale!</p>
+                                <!-- You can add more details for sale if needed -->
+                            {% else %}
+                                <p class="card-text">Not on Sale</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar column for buttons -->
+        <div class="col-md-4">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <!-- Add to Cart button -->
+                    <a href="#" class="btn btn-primary shadow-0 me-1" onclick="addToCart(event, '{{ product.id }}', '{{ product.name }}', '{{ product.price }}')">Add to cart</a>
+                      <!-- Add to Wishlist button -->
+                      <a href="#" class="btn btn-light border px-2 pt-2 icon-hover" onclick="addToWishlist(event, '{{ product.id }}', '{{ product.name }}', '{{ product.price }}')">
+                          <i class="fas fa-heart fa-lg text-secondary px-1"></i>
+                      </a></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'home.html' %}
+{% block content %}
+<h1 style="padding-left: 85px;">Order History</h1>
+    {% if order_history %}
+        {% for order in order_history %}
+            <div class="card mb-3" style="padding-left: 85px;">
+                <div class="card-header">
+                    Order #: {{ order.pk }} - Total Price: ₹{{ order.total_price }} - Date Ordered: {{ order.date_ordered }}
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        {% for ordered_product in order.orderedproduct_set.all %}
+                            <div class="col-lg-3 col-md-6 col-sm-6">
+                                <div class="card my-2 shadow-2-strong">
+                                    <a href="{% if ordered_product.product.id %}{% url 'product_detail' ordered_product.product.id %}{% endif %}">
+                                        <img src="{{ ordered_product.product.image.url }}" class="card-img-top" style="aspect-ratio: 1 / 1" />
+                                    </a>
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ ordered_product.product.name }}</h5>
+                                        <p class="card-text">Price: ₹{{ ordered_product.product.price }}</p>
+                                        <p class="card-text">Quantity: {{ ordered_product.quantity }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No orders found.</p>
+    {% endif %}
+{% endblock %}

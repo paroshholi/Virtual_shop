@@ -1,0 +1,33 @@
+{%extends 'home.html'%}
+{%block content%}
+<h3 style="padding-left: 85px;">{{ category }} Products</h3>
+<section>
+    <div class="container my-5">
+
+  
+        <div class="row">
+            {% for product in products %}
+            <div class="col-lg-3 col-md-6 col-sm-6 d-flex">
+                <div class="card w-100 my-2 shadow-2-strong">
+                  <a href="{% url 'product_detail' product.id %}">
+                    <img src="{{ product.image.url }}" class="card-img-top" style="aspect-ratio: 1 / 1" />
+                </a>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text">Price: ₹{{ product.price }}</p>
+                    </div>
+                    <div class="card-footer d-flex align-items-end pt-3 px-0 pb-0 mt-auto">
+                        <!-- Add to Cart button -->
+                        <a href="#" class="btn btn-primary shadow-0 me-1" onclick="addToCart(event, '{{ product.id }}', '{{ product.name }}', '{{ product.price }}')">Add to cart</a>
+                        <!-- Add to Wishlist button -->
+                        <a href="#" class="btn btn-light border px-2 pt-2 icon-hover" onclick="addToWishlist(event, '{{ product.id }}', '{{ product.name }}', '{{ product.price }}')">
+                            <i class="fas fa-heart fa-lg text-secondary px-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+  </div>
+    </div>
+  </section>
+{%endblock%}
