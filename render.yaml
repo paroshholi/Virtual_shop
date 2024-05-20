@@ -3,6 +3,6 @@ services:
     name: virtual_shop
     env: python
     buildCommand: pip install -r requirements.txt && python manage.py migrate
-    startCommand: virtual_shop.wsgi:application --log-file -
+    startCommand: gunicorn virtual_shop.wsgi:application --log-file -
 databases:
   - name: Virtual_shop
