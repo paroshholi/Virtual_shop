@@ -2,7 +2,7 @@ services:
   - type: web
     name: virtual_shop
     env: python
-    buildCommand: pip install -r requirements.txt && python manage.py migrate
+    buildCommand: pip install -r requirements.txt && python manage.py migrate && python chatbot/chatbot.py
     startCommand: gunicorn virtual_shop.wsgi:application --log-file -
 databases:
   - name: Virtual_shop
